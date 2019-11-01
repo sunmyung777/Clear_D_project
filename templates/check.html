@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    <title>Working Done!</title>
+{% endblock %}
+
+{% block body%}
+    <h1 class="finale_message">Your working is done!!</h1>
+    <a href="/" class="finale_text">clear more directory</a>
+    <script>
+        setTimeout(function() {
+            var ret = window.open('/download');
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:800&display=swap" rel="stylesheet">
+
+    {%block title%}
+        <title>Clear folder</title>
+    {%endblock%}
+</head>
+<body>
+    <div class="main_top">
+        <a href="/"><img src="{{url_for('static',filename='img/logo.png')}}" class="logo"></a>
+    </div>
+    <div class="main_box">
+        {% block body %}
+        <div class="Welcome_Text">Clear your Directory!!</div>
+        <div class="text_bound">
+            <div class="mini_text">You can clear your directory in this web.</div>
+            <div class="mini_text">1. choose folder to clear.</div>
+            <div class="mini_text">2. download the cleared folder.</div>
+            <div class="mini_text" style="text-align: center; font-size: 40px;">And... It's end!!</div>
+        </div>
+        <div class="explanation">
+            <video width="400" autoplay loop muted class="video1">
+                <source src="{{url_for('static',filename='img/video1.mp4')}}" type="video/mp4">
+            </video>
+            <img src="{{url_for('static',filename='img/main_icon.png')}}" width="250px">
+            <video width="400" autoplay loop muted class="video1">
+                    <source src="{{url_for('static',filename='img/video2.mp4')}}" type="video/mp4">
+                </video>
+        </div>
+        <form action="/" method="post" enctype="multipart/form-data" class="file_input_button"> 
+            <input type="file" name="file" webkitdirectory="" directory="" onchange="form.submit()">
+        </form>
+        {% endblock%}
+    </div>
+    <script src="{{url_for('static',filename='js/main.js')}}"></script>
+</body>
+</html>

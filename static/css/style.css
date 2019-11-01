@@ -1,0 +1,65 @@
+body{
+    margin:0;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+.finale_message{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 70px;
+}
+.file_input_button{
+    font-size: 30px;
+}
+.main_top{
+    width: 100vw;
+    height: 10vh;
+    background: #8E2DE2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.logo{
+    height: 10vh;
+}
+.main_box{
+    width: 100vw;
+    height:90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.Welcome_Text{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 60px;
+    color:#600CFF;
+}
+.text_bound{
+    margin-top: 10px;
+    border:2px solid black;
+    margin-bottom: 20px;
+}
+.mini_text{
+    padding:5px 10px 5px 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    color:#4A2D80;
+}
+.main_icon{
+    width: 300px;
+    margin-bottom: 30px;
+}
+.video1{
+    border:2px solid black;
+}
+.finale_text{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    border-bottom: 2px solid black;
+}
+.finale_text:hover{
+    color:yellow;
+    border-bottom:1px solid yellow;
+}
