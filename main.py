@@ -7,7 +7,7 @@ from PIL import Image
 import shutil
 import zipfile
 
-UPLOAD_FOLDER = 'C:/Users/user/Desktop/python/gong/images'
+UPLOAD_FOLDER = './images'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 app=Flask(__name__)
@@ -36,19 +36,20 @@ def main():
         newfiles=[]
         for files in files_list:
             newfiles+=[files.filename.replace('/','_')]
+        
+        print(newfiles)
         return check(newfiles)
 
 @app.route('/check')
 def check(files_list):
     
     lists=[]
-    
     for i in range(0,len(files_list)):
-        a=cv2.imread('C:/Users/user/Desktop/python/gong/images/'+files_list[i],cv2.IMREAD_GRAYSCALE)
+        a=cv2.imread('images/'+files_list[i],cv2.IMREAD_GRAYSCALE)
         dst1 = cv2.resize(a, dsize=(300, 300), interpolation=cv2.INTER_AREA)
         lists.append(files_list[i])
         for j in range(0,i):
-            b=cv2.imread('C:/Users/user/Desktop/python/gong/images/'+files_list[j],cv2.IMREAD_GRAYSCALE)
+            b=cv2.imread('images/'+files_list[j],cv2.IMREAD_GRAYSCALE)
             dst2 = cv2.resize(b, dsize=(300, 300), interpolation=cv2.INTER_AREA)
             
             if(np.sum(dst1-dst2)==0):
@@ -56,14 +57,14 @@ def check(files_list):
                 break
 
     for obj in lists:
-        im = Image.open('C:/Users/user/Desktop/python/gong/images/'+obj)
-        im.save('C:/Users/user/Desktop/python/gong/check/'+obj)
+        im = Image.open('images/'+obj)
+        im.save('check/'+obj)
 
-    zips = zipfile.ZipFile('C:/Users/user/Desktop/python/gong/sort.zip', 'w')
+    zips = zipfile.ZipFile('sort.zip', 'w')
 
-    for folder, subfolders, files in os.walk('C:/Users/user/Desktop/python/gong/check'):
+    for folder, subfolders, files in os.walk('check'):
         for file in files:
-            zips.write(os.path.join(folder, file), os.path.relpath(os.path.join(folder,file), 'C:/Users/user/Desktop/python/gong/check'), compress_type = zipfile.ZIP_DEFLATED)
+            zips.write(os.path.join(folder, file), os.path.relpath(os.path.join(folder,file), 'check'), compress_type = zipfile.ZIP_DEFLATED)
     
     zips.close()
     
@@ -74,7 +75,7 @@ def check(files_list):
 
 @app.route('/download')
 def download():
-    return send_file('C:/Users/user/Desktop/python/gong/sort.zip', as_attachment=True,attachment_filename='sort.zip')
+    return send_file('sort.zip', as_attachment=True,attachment_filename='sort.zip')
 if __name__ == "__main__":
     app.run(debug=True,port=5000)
 
