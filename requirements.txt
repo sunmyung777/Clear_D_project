@@ -5,7 +5,7 @@ Jinja2==2.11.2
 MarkupSafe==1.1.1
 numpy==1.19.3
 opencv-python==4.4.0.46
-Pillow==8.0.1
+Pillow==9.3.0
 pynput==1.7.1
 six==1.15.0
 Werkzeug==1.0.1
